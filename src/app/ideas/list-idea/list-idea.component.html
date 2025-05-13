@@ -1,0 +1,13 @@
+<div class="idea-list">
+
+    @for (idea of ideas; track idea.id) {
+        <app-idea  [Idea]="idea" (listIdeas)="listAfterEmit()" (changeLoader)="setLoader()" />
+    } @empty {
+        <p>Nincs egyetlen ötlet sem</p>
+    }
+</div>
+@if(loader()){
+    <app-loader />
+}@else{
+    <button mat-raised-button color="primary" [routerLink]="['./new']" >Add</button>
+}

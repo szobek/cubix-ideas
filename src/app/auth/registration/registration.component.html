@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header >
+        <mat-card-title>Registration</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div>
+            <form [formGroup]="registrationForm" >
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email" >
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+            </form>
+            </div>
+        </mat-card-content>
+        
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="button" (click)="register()" [disabled]="!registrationForm.valid">Registration</button>
+        </mat-card-actions>
+</mat-card>

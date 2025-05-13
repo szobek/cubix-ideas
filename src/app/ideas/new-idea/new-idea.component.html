@@ -1,0 +1,13 @@
+<div class="form-wrapper">
+
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Idea name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Idea description" formControlName="description">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!createForm.valid">create</button>
+    </form>
+
+</div>
