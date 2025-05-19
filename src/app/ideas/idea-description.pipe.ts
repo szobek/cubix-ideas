@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class IdeaDescriptionPipe implements PipeTransform {
 
   transform(description: string ): string {
-    return description.length > 100 ? description.substring(0, 100) + '...' : description;
+    return description.length > 100 ? `${description.substring(0, 100)} ...` : description;
   }
 
 }

@@ -26,8 +26,10 @@ import { VoteComponent } from '../vote/vote.component';
 })
 export class ViewIdeaComponent implements OnInit {
   @Input() idea?: Idea;
+  
+  private readonly router: Router = inject(Router);
+
   ideaFromService: WritableSignal<Idea>=this.ideasService.idea; 
-  router: Router = inject(Router);
   loader: WritableSignal<boolean>
 
   constructor(
@@ -35,13 +37,8 @@ export class ViewIdeaComponent implements OnInit {
     ) {
       this.loader=ideasService.loader
     }
+    
   ngOnInit(): void {
     this.ideasService.idea.update(() => (this.idea as Idea));
-    console.log(this.ideasService.idea());
-    
-     
   }
-
-
- 
 }

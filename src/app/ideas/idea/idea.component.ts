@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Idea } from '../models/idea.model';
 import { RouterModule } from '@angular/router';
-import { VoteComponent } from "../vote/vote.component";
+import { VoteComponent } from '../vote/vote.component';
 import { IdeasService } from '../ideas.service';
 import { IdeaNamePipe } from '../idea-name.pipe';
 import { IdeaDescriptionPipe } from '../idea-description.pipe';
@@ -27,20 +27,21 @@ import { IdeaDescriptionPipe } from '../idea-description.pipe';
     RouterModule,
     VoteComponent,
     IdeaNamePipe,
-    IdeaDescriptionPipe
-],
+    IdeaDescriptionPipe,
+  ],
   templateUrl: './idea.component.html',
   styleUrl: './idea.component.scss',
 })
 export class IdeaComponent {
   protected idea?: Idea;
-loader:WritableSignal<boolean>;
-@Output() setIdea: EventEmitter<Idea[]> = new EventEmitter<Idea[]>();
-constructor(private readonly ideasService: IdeasService) {
-  this.loader=ideasService.loader;
-}
+  protected loader: WritableSignal<boolean>;
+
+  @Output() setIdea: EventEmitter<Idea[]>=new EventEmitter<Idea[]>();
   @Input() set Idea(idea: Idea) {
     this.idea=idea;
   }
 
+  constructor(private readonly ideasService: IdeasService) {
+    this.loader=this.ideasService.loader;
+  }
 }

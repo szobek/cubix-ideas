@@ -33,8 +33,8 @@ export class NewIdeaComponent implements OnInit {
   isCall:WritableSignal<boolean>=signal(false);
   loader: WritableSignal<boolean>;
 
-  ideasService: IdeasService=inject(IdeasService);
-  router: Router=inject(Router);
+  private readonly ideasService: IdeasService=inject(IdeasService);
+  private readonly router: Router=inject(Router);
   
   createForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),

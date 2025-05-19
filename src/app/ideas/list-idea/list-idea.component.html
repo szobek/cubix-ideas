@@ -1,5 +1,4 @@
 <div class="idea-list">
-
     @for (idea of ideas(); track idea.id) {
         <app-idea  [Idea]="idea" (listIdeas)="listAfterEmit()" (changeLoader)="setLoader()" />
     } @empty {
@@ -7,7 +6,7 @@
     }
 </div>
 @if(loader()){
-    <app-loader />
+    <app-loader/>
 }@else{
     <button mat-raised-button color="primary" [routerLink]="['./new']" >Add</button>
 }

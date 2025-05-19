@@ -10,7 +10,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Idea } from '../models/new-idea.model';
+import { Idea } from '../models/idea.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize, switchMap, tap } from 'rxjs/operators';
 import { IdeasService } from '../ideas.service';
@@ -24,10 +24,10 @@ import { IdeasService } from '../ideas.service';
 })
 export class VoteComponent {
   @Input() idea?: Idea;
-  @Output() setIdea: EventEmitter<Idea|Idea[]> = new EventEmitter<Idea|Idea[]>();
+  @Output() setIdea: EventEmitter<Idea|Idea[]>=new EventEmitter<Idea|Idea[]>();
 
-  private readonly destroyRef: DestroyRef = inject(DestroyRef);
-  loader: WritableSignal<boolean>;
+  private readonly destroyRef: DestroyRef=inject(DestroyRef);
+  loader: WritableSignal<boolean>=this.ideasService.loader;
   private readonly ideaId: string = this.activatedRoute.snapshot.params['id'];
 
   constructor(
@@ -35,7 +35,6 @@ export class VoteComponent {
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute
   ) {
-    this.loader = ideasService.loader;
     this.loader.set(false);
   }
 
@@ -57,7 +56,6 @@ export class VoteComponent {
         } else{
           this.ideasService.idea.set(idea);
         }
-        
       }),
       takeUntilDestroyed(this.destroyRef),
       finalize(() => {
@@ -72,7 +70,6 @@ export class VoteComponent {
     this.ideasService
     .downvoteIdea(idea)
     .pipe(
-   
       switchMap(() => {
         if (this.ideaId) {
           return this.ideasService.getIdeaById(idea.id+"")
@@ -87,9 +84,7 @@ export class VoteComponent {
           this.ideasService.ideaList.update(() => idea);
         } else{
           this.ideasService.idea.update(() =>(idea));
-          console.log(this.ideasService.idea());
         }
-        
       }),
       takeUntilDestroyed(this.destroyRef),
       finalize(() => {

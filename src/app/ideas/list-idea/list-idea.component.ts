@@ -10,13 +10,20 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-list-idea',
   standalone: true,
-  imports: [IdeaComponent, LoaderComponent,MatButtonModule,RouterModule],
+  imports: [
+    IdeaComponent, 
+    LoaderComponent,
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './list-idea.component.html',
   styleUrl: './list-idea.component.scss',
 })
 export class ListIdeaComponent {
+  
   ideas: WritableSignal<Idea[]> = this.ideasService.ideaList;
   loader: WritableSignal<boolean>
+
   constructor(
     private readonly ideasService: IdeasService,
     private readonly destroyRef: DestroyRef
