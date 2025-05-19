@@ -14,11 +14,18 @@ import { Idea } from '../models/idea.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IdeasService } from '../ideas.service';
 import { tap } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-idea',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatButtonModule, MatBadgeModule],
+  imports: [
+    MatCardModule, 
+    MatIconModule, 
+    MatButtonModule, 
+    MatBadgeModule, 
+    RouterModule
+  ],
   templateUrl: './idea.component.html',
   styleUrl: './idea.component.scss',
 })

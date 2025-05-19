@@ -1,13 +1,22 @@
 <div class="form-wrapper">
-
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-        <mat-form-field class="example-full-width">
+        <mat-form-field  appearance="outline">
+            <mat-label>Idea name</mat-label>
             <input matInput placeholder="Idea name" formControlName="name">
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field appearance="outline">
+            <mat-label>Idea description</mat-label>
             <input matInput placeholder="Idea description" formControlName="description">
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="!createForm.valid">create</button>
+        <div class="form-actions">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!createForm.valid">
+                @if(isCall()) {
+                    <mat-spinner diameter="20" color="accent"></mat-spinner>
+                } @else {
+                    Save
+                }
+            </button>
+            <button type="button" mat-raised-button routerLink="/ideas" >Back</button>
+        </div>
     </form>
-
 </div>

@@ -31,4 +31,12 @@ loader:WritableSignal<boolean>=signal(true);
   createIdea(idea: Idea) {
     return this.http.post<Idea>(`${this.BASE_URL}`, idea);
   }
+
+  getIdeaById(id: string) {
+    return this.http.get<Idea>(`${this.BASE_URL}/${id}`);
+  }
+
+  editIdea(id: string, idea: Idea) {
+    return this.http.put<Idea>(`${this.BASE_URL}/${id}`, idea);
+  }
 }
