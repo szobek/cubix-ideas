@@ -1,0 +1,14 @@
+    <div class="view-idea-wrapper">
+        <mat-card class="idea" [matBadge]="ideaFromService().votes">
+            <mat-card-header>
+                <mat-card-title>{{ideaFromService().name}}</mat-card-title>
+                <mat-card-subtitle>{{ideaFromService().description}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <app-vote [idea]="idea" ></app-vote>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+@if(loader()){
+    <app-loader />
+}

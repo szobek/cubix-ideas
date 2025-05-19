@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './list-idea.component.scss',
 })
 export class ListIdeaComponent {
-  ideas: Idea[] = [];
+  ideas: WritableSignal<Idea[]> = this.ideasService.ideaList;
   loader: WritableSignal<boolean>
   constructor(
     private readonly ideasService: IdeasService,
@@ -31,7 +31,7 @@ export class ListIdeaComponent {
 
   listIdeas() {
     return this.ideasService.listIdeas().pipe(
-      tap((ideas) => (this.ideas = ideas)),
+      tap((ideas) => (this.ideas.set(ideas))),
       tap(() => (this.loader.update(() => false))),
       takeUntilDestroyed(this.destroyRef)
     );

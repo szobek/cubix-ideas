@@ -9,6 +9,9 @@ import { environment } from '../../environments/environment';
 export class IdeasService {
   private readonly BASE_URL = `${environment.baseUrl}/ideas`;
 loader:WritableSignal<boolean>=signal(true);
+ideaList:WritableSignal<Idea[]>=signal([]);
+  idea:WritableSignal<Idea>=signal({} as Idea);
+  ideasService: Idea | undefined;
   constructor(
     private readonly http: HttpClient
   ) { }

@@ -1,6 +1,6 @@
 <div class="idea-list">
 
-    @for (idea of ideas; track idea.id) {
+    @for (idea of ideas(); track idea.id) {
         <app-idea  [Idea]="idea" (listIdeas)="listAfterEmit()" (changeLoader)="setLoader()" />
     } @empty {
         <p>Nincs egyetlen ötlet sem</p>
