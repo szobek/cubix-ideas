@@ -13,6 +13,8 @@ import { Idea } from '../models/idea.model';
 import { RouterModule } from '@angular/router';
 import { VoteComponent } from "../vote/vote.component";
 import { IdeasService } from '../ideas.service';
+import { IdeaNamePipe } from '../idea-name.pipe';
+import { IdeaDescriptionPipe } from '../idea-description.pipe';
 
 @Component({
   selector: 'app-idea',
@@ -23,7 +25,9 @@ import { IdeasService } from '../ideas.service';
     MatButtonModule,
     MatBadgeModule,
     RouterModule,
-    VoteComponent
+    VoteComponent,
+    IdeaNamePipe,
+    IdeaDescriptionPipe
 ],
   templateUrl: './idea.component.html',
   styleUrl: './idea.component.scss',

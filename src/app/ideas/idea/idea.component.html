@@ -1,8 +1,8 @@
 @if(idea){
     <mat-card class="idea" [matBadge]="idea.votes">
         <mat-card-header>
-            <mat-card-title>{{idea.name}}</mat-card-title>
-            <mat-card-subtitle>{{idea.description}}</mat-card-subtitle>
+            <mat-card-title>{{idea.name| ideaName: 'Title: '}}</mat-card-title>
+            <mat-card-subtitle>{{idea.description| ideaDescription}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <button mat-icon-button [routerLink]="['./', idea.id]"><mat-icon>visibility</mat-icon></button>
